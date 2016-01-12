@@ -1,0 +1,7 @@
+---
+
+- name: Install Glusterfs | Add glusterfs PPA
+  apt_repository: repo="ppa:gluster/glusterfs-{{ glusterfs_version }}" state=present update_cache=yes
+
+- name: Install Glusterfs | Install glusterfs
+  apt: name=glusterfs-server state=latest

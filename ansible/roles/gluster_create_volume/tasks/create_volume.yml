@@ -1,0 +1,27 @@
+---
+
+- name: Gluster Create Volume | Peer all servers
+  shell: "gluster peer probe {{ item }}"
+  with_items: nodes
+  when: ansible_default_ipv4.address != item
+
+- name: Gluster Create Volume | Building string p.1
+  shell: "echo {{item}}:/data/brick1/gv0"
+  with_items: nodes
+  register: out_tmp
+
+- name: Gluster Create Volume | Building string p.2
+  set_fact: final_string="{{ out_tmp.results | map(attribute='stdout') | join(' ')}}"
+
+#- name: Gluster Create Volume | Build string
+#  set_fact: nodes="{{ CLUSTER_NODES | join(' ') }}"
+#
+#- name:
+#  set_fact: line="{{item}}:/data/brick"
+#  with_items: CLUSTER_NODES
+#
+
+- debug: var=final_string
+
+- name: Gluster Create Volume | Create volume
+  shell: "gluster volume create gv0 {{ final_string }} force"

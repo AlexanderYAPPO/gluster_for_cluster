@@ -1,0 +1,18 @@
+---
+
+- hosts: cold_tier
+
+  pre_tasks:
+    - apt: update_cache=yes
+      sudo: yes
+    - apt: name=git state=present
+      sudo: yes
+    - shell: 'update-locale "LANGUAGE=en_US.UTF-8"'
+      sudo: yes
+    - shell: 'update-locale "LC_ALL=en_US.UTF-8"'
+      sudo: yes
+
+  roles:
+    - role: install_glusterfs
+      glusterfs_version: "3.7"
+      sudo: yes

@@ -1,0 +1,14 @@
+---
+
+- hosts: cold_tier
+
+  roles:
+    - role: gluster_configure
+      sudo: yes
+
+- hosts: bastion
+
+  roles:
+    - role: gluster_create_volume
+      nodes: "{{ groups.cold_tier }}"
+      sudo: yes

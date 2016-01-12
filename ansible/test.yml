@@ -1,0 +1,51 @@
+---
+
+- hosts: local
+
+  tasks:
+
+  - debug: var=hostvars
+  - debug: msg="{{ groups.cold_tier }}"
+
+#    - debug: msg="123"
+#
+#    - set_fact: foo=""
+#
+#    - set_fact: one_fact=""
+#
+#    - set_fact: one_fact="{{ one_fact }} 123"
+#    - set_fact: one_fact="{{ one_fact }} 321"
+#    - debug: msg="{{ one_fact }}"
+#
+#
+#
+#    - set_fact: one_fact="{{ item }}"
+#      with_items:
+#        - "abc"
+#        - "efg"
+#      register: foo_res
+
+#    - name: make a list
+#      set_fact: foo="{{ foo_res.results | map(attribute='ansible_facts.one_fact') | join(' ') }}"
+
+#    - name: make a list
+#      set_fact: foo="{{ CLUSTER_NODES | join(' ') }}"
+
+#    - shell: "echo {{item}}:/data/brick"
+#      with_items: CLUSTER_NODES
+#      register: foo
+#    - debug: msg="{{ foo.results[0] }}"
+#
+#    - set_fact: aaa="{{ foo.results | map(attribute='stdout') | join('######')}}"
+#    - debug: var=aaa
+
+
+#    - name: Update bashrc for PythonBrew for foo user
+#      lineinfile:
+#        dest=/home/alexander/test
+#        line="{{line}} {{ item }}:/data/var/0 "
+#        state=present
+#        insertafter=EOF
+#        create=True
+#      with_items:
+#        CLUSTER_NODES
