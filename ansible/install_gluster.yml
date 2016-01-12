@@ -1,6 +1,6 @@
 ---
 
-- hosts: cold_tier
+- hosts: cluster
 
   pre_tasks:
     - apt: update_cache=yes

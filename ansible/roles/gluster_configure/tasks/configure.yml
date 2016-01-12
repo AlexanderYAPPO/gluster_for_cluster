@@ -1,4 +1,4 @@
 ---
 
 - name: Gluster Configure | Create directory for the volume
-  file: path=/data/brick1/gv0 state=directory mode=0755
+  file: path=/data/brick1/{{ volume_name }} state=directory mode=0755

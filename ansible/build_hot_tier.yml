@@ -1,6 +1,6 @@
 ---
 
-- hosts: cold_tier
+- hosts: hot_tier
 
   roles:
     - role: gluster_configure
@@ -10,8 +10,7 @@
 - hosts: bastion
 
   roles:
-    - role: gluster_create_volume
-      nodes: "{{ groups.cold_tier }}"
-      all_nodes: "{{ groups.cluster }}"
+    - role: gluster_attach_volume
+      nodes: "{{ groups.hot_tier }}"
       volume_name: gv0
       sudo: yes

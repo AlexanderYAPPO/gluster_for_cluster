@@ -1,7 +1,8 @@
 # gluster_for_cluster
 
 This scripts are made for deploying glusterfs tiering on clusters. It's considered
-to having two types of nodes: cold and hot tier nodes.
+to having two types of nodes: cold and hot tier nodes. The name of the gluster
+cluster will be gv0.
 
 There are several playbooks:
 
