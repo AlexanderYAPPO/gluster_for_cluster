@@ -1,0 +1,8 @@
+---
+
+- hosts: bastion
+
+  roles:
+    - role: gluster_detach_tier
+      volume_name: "{{ VOLUME_NAME }}"
+      sudo: yes

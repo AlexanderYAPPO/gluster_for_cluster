@@ -4,13 +4,13 @@
 
   roles:
     - role: gluster_configure
-      volume_name: gv0
+      volume_name: "{{ VOLUME_NAME }}"
       sudo: yes
 
 - hosts: bastion
 
   roles:
-    - role: gluster_attach_volume
+    - role: gluster_attach_tier
       nodes: "{{ groups.hot_tier }}"
-      volume_name: gv0
+      volume_name: "{{ VOLUME_NAME }}"
       sudo: yes

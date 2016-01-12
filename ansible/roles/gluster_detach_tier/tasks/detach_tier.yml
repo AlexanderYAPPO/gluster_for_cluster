@@ -1,0 +1,5 @@
+- name: Gluster Detach Volume | Detach volume start
+  shell: "gluster volume tier {{ volume_name }} detach start"
+
+- name: Gluster Detach Volume | Detach volume commit
+  shell: "yes | gluster volume tier {{ volume_name }} detach commit"
