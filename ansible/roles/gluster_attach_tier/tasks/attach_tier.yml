@@ -1,7 +1,7 @@
 ---
 
 - name: Gluster Attach Tier | Building string p.1
-  shell: "echo {{item}}:/data/brick1/gv0"
+  shell: "echo {{item}}:{{ gluster_dir }}"
   with_items: nodes
   register: out_tmp
 

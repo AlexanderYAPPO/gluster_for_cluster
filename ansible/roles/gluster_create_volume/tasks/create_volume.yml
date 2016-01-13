@@ -6,7 +6,7 @@
   when: ansible_default_ipv4.address != item
 
 - name: Gluster Create Volume | Building string p.1
-  shell: "echo {{item}}:/data/brick1/{{ volume_name }}"
+  shell: "echo {{item}}:{{ gluster_dir }}/{{ volume_name }}"
   with_items: nodes
   register: out_tmp
 
@@ -20,3 +20,19 @@
 
 - name: Gluster Create Volume | Start volume
   shell: "gluster volume start {{ volume_name }}"
+
+#- name: Gluster Create Volume | Mount gluster
+#  mount: name=/mnt
+#         src="{{ ansible_default_ipv4.address }}/{{ volume_name }}"
+#         fstype=glusterfs
+#         state=mounted
+#
+#- name: Gluster Create Volume | Create directories in cluster p.1
+#  file: path=/mnt/shared state=directory mode=0755
+#
+#- name: Gluster Create Volume | Create directories in cluster p.2
+#  file: path=/mnt/internals state=directory mode=0755
+#
+#- name: Gluster Create Volume | Unmount gluster
+#  mount: name=/mnt
+#         state=unmounted
