@@ -1,0 +1,10 @@
+---
+
+- hosts: bastion
+  roles:
+    - role: gluster_configure_volume
+      keys:
+        - { key: tier-demote-frequency, value: 180 }
+        - { key: tier-promote-frequency, value: 180 }
+      volume_name: "{{ VOLUME_NAME }}"
+      sudo: yes

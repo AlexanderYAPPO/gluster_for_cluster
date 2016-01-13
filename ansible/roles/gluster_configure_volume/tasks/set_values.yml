@@ -1,0 +1,5 @@
+---
+
+- name: Gluster Configure Volume | Set keys
+  shell: "gluster volume set {{ volume_name }} {{ item.key }} {{ item.value }}"
+  with_items: keys
